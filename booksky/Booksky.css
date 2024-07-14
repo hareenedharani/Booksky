@@ -1,0 +1,108 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+#header {
+    width: 100%;
+    background-color: tomato;
+    text-align: left;
+    padding: 20px;
+}
+
+#header h1 {
+    margin: 0;
+    color: white;
+    font-weight: bold;
+}
+
+#book-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+.form-box{
+    width: 30%;
+}
+
+.form-box, .book-item {
+    background-color: tomato;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.form-box h2, .form-box h3, .book-item h1, .book-item p {
+    color: white;
+    margin: 0 0 10px 0;
+}
+
+.form-box input, .form-box textarea {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.form-box button {
+    width: 49%; /* Adjusted width to fit two buttons in a row */
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    margin-bottom: 10px;
+    display: inline-block; /* Ensures buttons are on the same line */
+}
+
+.form-box button:nth-of-type(1) {
+    background-color: black;
+}
+
+.form-box button:nth-of-type(2) {
+    background-color: black;
+}
+
+.book-item {
+    background-color: black;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    position: relative;
+}
+
+.book-item h1 {
+    color: tomato;
+}
+
+.book-item button {
+    position: static;
+    top: 10px;
+    right: 10px;
+    background-color: tomato;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+#add-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 30px;
+    cursor: pointer;
+}

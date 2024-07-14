@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookSky</title>
+    <link rel="stylesheet" href="Booksky.css">
+</head>
+<body>
+    <div id="header">
+        <h1>BookSky</h1>
+    </div>
+
+    <div id="book-container">
+        <!-- The book list will be displayed here -->
+    </div>
+
+    <div id="add-icon" onclick="toggleAddBookForm()">
+        +
+    </div>
+
+    <div id="add-book-form" class="form-box">
+        <h2>Add Book</h2>
+        <h3>Book Title</h3>
+        <input type="text" id="book-title" placeholder="Enter book title">
+        <h3>Book Author</h3>
+        <input type="text" id="book-author" placeholder="Enter book author">
+        <h3>Description</h3>
+        <textarea id="book-description" placeholder="Enter book description"></textarea>
+        <button onclick="addBook()">Add</button>
+        <button onclick="toggleAddBookForm()">Clear</button>
+    </div>
+
+    <script>
+        function toggleAddBookForm() {
+            const form = document.getElementById('add-book-form');
+            form.style.display = form.style.display === 'none' || form.style.display === '' ? 'block' : 'none';
+        }
+
+        function addBook() {
+            const title = document.getElementById('book-title').value;
+            const author = document.getElementById('book-author').value;
+            const description = document.getElementById('book-description').value;
+
+            if (title && author && description) {
+                const bookItem = document.createElement('div');
+                bookItem.className = 'book-item';
+
+                const bookTitle = document.createElement('h1');
+                bookTitle.textContent = title;
+                bookItem.appendChild(bookTitle);
+
+                const bookAuthor = document.createElement('p');
+                bookAuthor.textContent = `Author: ${author}`;
+                bookItem.appendChild(bookAuthor);
+
+                const bookDescription = document.createElement('p');
+                bookDescription.textContent = description;
+                bookItem.appendChild(bookDescription);
+
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Delete';
+                deleteButton.onclick = function() {
+                    bookItem.remove();
+                };
+                bookItem.appendChild(deleteButton);
+
+                const container = document.getElementById('book-container');
+                container.insertBefore(bookItem, container.firstChild);
+
+                resetForm();
+                toggleAddBookForm();
+            } else {
+                alert('Please fill in all fields.');
+            }
+        }
+
+        function resetForm() {
+            document.getElementById('book-title').value = '';
+            document.getElementById('book-author').value = '';
+            document.getElementById('book-description').value = '';
+        }
+
+        // Hide the form initially
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('add-book-form').style.display = 'none';
+        });
+    </script>
+</body>
+</html>
